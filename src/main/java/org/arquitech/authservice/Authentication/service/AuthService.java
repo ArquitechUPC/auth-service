@@ -85,4 +85,9 @@ public class AuthService {
                 .build();
 
     }
+
+    public boolean findUserById(Integer id) {
+        return userRepository.existsById(id);
+    }
+
 }

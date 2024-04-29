@@ -33,4 +33,10 @@ public class AuthController {
     public ResponseEntity<AuthResponse> register(@RequestBody RegisterRequest request) {
         return ResponseEntity.ok(authService.register(request));
     }
+
+    @GetMapping("/exist-user/{id}")
+    public ResponseEntity<?> findUserById(@PathVariable Integer id) {
+        return ResponseEntity.ok(authService.findUserById(id));
+    }
+
 }
