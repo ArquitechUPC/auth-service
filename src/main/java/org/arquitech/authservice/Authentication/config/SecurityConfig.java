@@ -26,9 +26,9 @@ public class SecurityConfig {
                 .authorizeRequests(authRequest ->
                         authRequest
                                 .requestMatchers
-                                        ("/api/v1/auth/**",
-                                                "/swagger-ui/**",
-                                                "v3/api-docs/**").permitAll()
+                                ("/api/v1/auth/**",
+                                        "/swagger-ui/**",
+                                        "v3/api-docs/**").permitAll()
                                 .anyRequest().authenticated()
                 )
                 .sessionManagement(sessionManager ->
