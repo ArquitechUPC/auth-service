@@ -44,5 +44,14 @@ public class AuthController {
         return ResponseEntity.ok(authService.getUsersByCompanyIdAndRole(companyId, Role.USER));
     }
 
+    @PostMapping("/register-client")
+    public ResponseEntity<?> registerClient(@RequestBody RegisterRequest request) {
+        return ResponseEntity.ok(authService.registerClient(request));
+    }
+
+    @GetMapping("/exist-user/{id}")
+    public ResponseEntity<?> findUserById(@PathVariable Integer id) {
+        return ResponseEntity.ok(authService.findUserById(id));
+    }
 
 }
