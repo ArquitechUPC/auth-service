@@ -86,6 +86,27 @@ public class AuthService {
 
     }
 
+    public Integer registerClient(RegisterRequest request) {
+        User user = User.builder()
+                .username(request.getUsername())
+                .email(request.getEmail())
+                .password(passwordEncoder.encode(request.getPassword()))
+                .gymName(request.getGymName())
+                .phoneNumber(request.getPhoneNumber())
+                .address(request.getAddress())
+                .city(request.getCity())
+                .role(Role.USER)
+                .build();
+
+
+
+         userRepository.save(user);/*AuthResponse.builder()
+                .token(jwtService.getToken(user))
+                .build();*/
+
+        return user.getId();
+    }
+
     public boolean findUserById(Integer id) {
         return userRepository.existsById(id);
     }
