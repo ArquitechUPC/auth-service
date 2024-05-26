@@ -27,7 +27,7 @@ public class User implements UserDetails {
     @Column(unique = true, nullable = false)
     String email;
     String password;
-    String gymName;
+    Integer companyId;
     String phoneNumber;
     String address;
     String city;
