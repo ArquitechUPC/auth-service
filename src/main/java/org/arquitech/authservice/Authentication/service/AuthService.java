@@ -73,7 +73,8 @@ public class AuthService {
                 .phoneNumber(request.getPhoneNumber())
                 .address(request.getAddress())
                 .city(request.getCity())
-                .role(Role.USER)
+                .companyId(request.getCompanyId())
+                .role(Role.ADMIN)
                 .build();
 
         userRepository.save(user);
@@ -102,11 +103,11 @@ public class AuthService {
                 .username(request.getUsername())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
-                .gymName(request.getGymName())
                 .phoneNumber(request.getPhoneNumber())
                 .address(request.getAddress())
                 .city(request.getCity())
                 .role(Role.USER)
+                .companyId(request.getCompanyId())
                 .build();
 
 

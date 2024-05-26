@@ -33,7 +33,7 @@ public class AuthController {
     }
 
     @Operation(summary = "Register", description = "Register to the application")
-    @PostMapping("/register")
+    @PostMapping("/register-admin")
     public ResponseEntity<AuthResponse> register(@RequestBody RegisterRequest request) {
         return ResponseEntity.ok(authService.register(request));
     }
