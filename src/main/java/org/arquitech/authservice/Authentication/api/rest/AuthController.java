@@ -3,14 +3,14 @@ package org.arquitech.authservice.Authentication.api.rest;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.arquitech.authservice.Authentication.domain.model.entity.Role;
 import org.arquitech.authservice.Authentication.domain.model.entity.User;
-import org.arquitech.authservice.Authentication.resource.AuthResponse;
-import org.arquitech.authservice.Authentication.resource.ChangePasswordRequest;
-import org.arquitech.authservice.Authentication.resource.LoginRequest;
-import org.arquitech.authservice.Authentication.resource.RegisterRequest;
+import org.arquitech.authservice.Authentication.resource.*;
 import org.arquitech.authservice.Authentication.service.AuthService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Tag(name = "auth", description = "the auth API")
 @RestController
@@ -37,4 +37,12 @@ public class AuthController {
     public ResponseEntity<AuthResponse> register(@RequestBody RegisterRequest request) {
         return ResponseEntity.ok(authService.register(request));
     }
+
+    @Operation(summary = "Get user", description = "Get users info")
+    @GetMapping("/get-clients-info")
+    public ResponseEntity<List<UsersInfoResponse>> get(@RequestParam Integer companyId) {
+        return ResponseEntity.ok(authService.getUsersByCompanyIdAndRole(companyId, Role.USER));
+    }
+
+
 }
